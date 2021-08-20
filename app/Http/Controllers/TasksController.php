@@ -3,7 +3,7 @@
  * @Author: Md Nazmus Shakib
  * @Date:   2021-08-17 23:53:12
  * @Last Modified by:   Md Nazmus Shakib
- * @Last Modified time: 2021-08-18 01:20:29
+ * @Last Modified time: 2021-08-20 11:38:28
  */
 
 
@@ -23,7 +23,7 @@ class TasksController extends Controller
     public function index()
     {
         //
-        $tasks= Task::get();
+        $tasks= Task::orderby('id', 'desc')->get();
         return view('index',compact('tasks'));
     }
 
@@ -35,7 +35,17 @@ class TasksController extends Controller
     public function create()
     {
         //
-        return view('create');
+        $statuses = [
+          [
+              'label' =>'Todo',
+              'value' =>'Todo',
+          ],
+          [
+            'label' =>'Done',
+            'value' =>'Done',
+          ]
+        ];
+        return view('create', compact('statuses'));
     }
 
     /**
@@ -46,7 +56,17 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate
+        $request->validate([
+           'title' => 'required'
+        ]);
+
+        $task = new Task();
+        $task->title =$request->title;
+        $task->description =$request->description;
+        $task->status =$request->status;
+        $task->save();
+        return redirect()->route('index');
     }
 
     /**
@@ -68,7 +88,18 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $statuses = [
+            [
+                'label' =>'Todo',
+                'value' =>'Todo',
+            ],
+            [
+              'label' =>'Done',
+              'value' =>'Done',
+            ]
+          ];
+          return view('edit', compact('statuses', 'task'));
     }
 
     /**
@@ -80,7 +111,17 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        //validate
+        $request->validate([
+            'title' => 'required'
+         ]);
+
+         $task->title =$request->title;
+         $task->description =$request->description;
+         $task->status =$request->status;
+         $task->save();
+         return redirect()->route('index');
     }
 
     /**
