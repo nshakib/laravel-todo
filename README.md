@@ -62,3 +62,12 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+What have been done - 
+1) Layout Making in Laravel
+2) Task List in Laravel
+3) Edit Task in Laravel
+4) Delete Task in Laravel
+5) List Processing in Laravel with Nice Date Time
+6) Alert when deleting Task
+7) Mode Change of Task in Delete Mode
