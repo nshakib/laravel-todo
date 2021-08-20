@@ -3,7 +3,7 @@
  * @Author: Md Nazmus Shakib
  * @Date:   2021-08-17 23:57:34
  * @Last Modified by:   Md Nazmus Shakib
- * @Last Modified time: 2021-08-20 11:45:06
+ * @Last Modified time: 2021-08-20 20:35:02
  */
 ?>
  @extends('layout')
@@ -15,12 +15,13 @@
             </div>
 
             <div class="float-right">
-                <a href="{{ route('task.create') }}" class="btn btn-info">Create Task</a>
+                <a href="{{ route('task.create') }}" class="btn btn-info">
+                    <i  class="fa fa-plus-circle" aria-hidden="true"></i> Create Task</a>
             </div>
             <div class="clearfix"></div>
         </div>
         @foreach ($tasks as $task)
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-header">
 
                     @if ($task->status === "Todo")
@@ -53,8 +54,14 @@
                         </div>
 
                         <div class="float-right">
-                            <a href="{{ route('task.edit',$task->id) }}" class="btn btn-success">Edit Task</a>
-                            <a href="{{ route('task.edit',$task->id) }}" class="btn btn-danger">Delete Task</a>
+                            <a href="{{ route('task.edit',$task->id) }}" class="btn btn-success">
+                                <i class="fa fa-edit" aria-hidden="true"></i> Edit Task</a>
+                            <form action="{{ route('task.destroy', $task->id) }}" method="POST" style="display: inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                            </form>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -62,4 +69,14 @@
                 <div></div>
             </div>
         @endforeach
+
+        @if (count($tasks)===0)
+        <div class="alert alert-danger p-2">
+            No Task Found. Please create one.
+            <br>
+            <a href="{{ route('task.create') }}" class="btn btn-info">
+                <i  class="fa fa-plus-circle" aria-hidden="true"></i> Create Task</a>
+        </div>
+
+        @endif
  @endsection

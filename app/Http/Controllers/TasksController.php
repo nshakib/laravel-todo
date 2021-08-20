@@ -3,7 +3,7 @@
  * @Author: Md Nazmus Shakib
  * @Date:   2021-08-17 23:53:12
  * @Last Modified by:   Md Nazmus Shakib
- * @Last Modified time: 2021-08-20 11:38:28
+ * @Last Modified time: 2021-08-20 20:21:50
  */
 
 
@@ -132,6 +132,11 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //find the task
+        $task = Task::findOrFail($id);
+
+        $task->delete();
+         return redirect()->route('index');
+
     }
 }

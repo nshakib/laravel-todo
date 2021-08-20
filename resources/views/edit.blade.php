@@ -3,7 +3,7 @@
  * @Author: Md Nazmus Shakib
  * @Date:   2021-08-17 23:37:41
  * @Last Modified by:   Md Nazmus Shakib
- * @Last Modified time: 2021-08-20 11:37:31
+ * @Last Modified time: 2021-08-20 20:36:20
  */
 ?>
  @extends('layout')
@@ -15,7 +15,8 @@
             </div>
 
             <div class="float-right">
-                <a href="{{ route('index') }}" class="btn btn-info">All Task</a>
+                <a href="{{ route('index') }}" class="btn btn-info">
+                    <i class="fa fa-arrow-left"></i> All Task</a>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -29,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea type="text" class="form-control" {{ $task->description }} id="description" rows="5" name="description"></textarea>
+                    <textarea type="text" class="form-control" id="description" rows="5" name="description">{{ $task->description }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="status">Status:</label>
@@ -39,7 +40,10 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="{{ route('index') }}" class="btn btn-secondary">
+                    <i class="fa fa-arrow-left"></i> Cancel</a>
+                 <button type="submit" class="btn btn-success">
+                    <i class="fa fa-check" aria-hidden="true"></i> Save</button>
             </form>
         </div>
  @endsection

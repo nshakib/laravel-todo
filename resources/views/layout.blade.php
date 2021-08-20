@@ -3,7 +3,7 @@
  * @Author: Md Nazmus Shakib
  * @Date:   2021-08-18 00:19:31
  * @Last Modified by:   Md Nazmus Shakib
- * @Last Modified time: 2021-08-18 00:25:53
+ * @Last Modified time: 2021-08-20 20:37:24
  */
 ?>
  <!DOCTYPE html>
@@ -24,6 +24,7 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -31,7 +32,7 @@
             <!-- A grey horizontal navbar that becomes vertical on small screens -->
             <nav class="navbar navbar-expand-sm bg-dark">
                 <!-- Brand -->
-                <a class="navbar-brand" href="#">Task App</a>
+                <a class="navbar-brand" href="{{ route('index') }}">Task App</a>
 
                 <!-- Toggler/collapsibe Button -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -45,9 +46,6 @@
                     </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('task.create') }}">New Task</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link 3</a>
                 </li>
                 </ul>
 
